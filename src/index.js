@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+
   const profilePic = document.querySelector('img');
   const email = document.querySelector("#email");
   const dob = document.querySelector("#date_of_birth");
@@ -10,11 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const cell = document.querySelector("#cell");
   const fullname = document.getElementById("fullname");
 
-  
-  fetch('https://randomuser.me/api/')
-    .then( res => res.json() )
-    .then(displayPerson)
+  const btn = document.querySelector('button');
 
+  function fetchData(event) {
+    return fetch('https://randomuser.me/api/')
+      .then( res => res.json() )
+      .then(displayPerson)
+  }
+
+  btn.addEventListener('click', fetchData);
 
   function displayPerson(json) {
 
